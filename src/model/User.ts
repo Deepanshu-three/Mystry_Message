@@ -33,7 +33,7 @@ export interface User extends Document {
 }
 
 //using User type here and creating the schema
-const UserSchema = new Schema<User>({
+const UserSchema: Schema<User> = new mongoose.Schema({
   username: {
     type: String,
     required: [true, "Username is required"],
@@ -62,9 +62,8 @@ const UserSchema = new Schema<User>({
     type: Boolean,
     default: false,
   },
-
   isAcceptingMessage: {
-    tyep: Boolean,
+    type: Boolean,
     default: true,
   },
   messages: [MessageSchema],

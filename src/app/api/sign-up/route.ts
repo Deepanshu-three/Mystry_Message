@@ -56,7 +56,7 @@ export async function POST(request: Request){
 
                 username,
                 email,
-                password,
+                password : hashedPassword,
                 verifyCode,
                 verifyCodeExpiry : expiryDate,
                 isVerified: false,
@@ -82,12 +82,15 @@ export async function POST(request: Request){
                 message: emailResponse.message
             },{status : 500})
 
+
         }
+
+        console.log(emailResponse)
 
         return Response.json({
             success: true,
             message: "User registered successfully, Please verify your email"
-        },{status : 500})
+        },{status : 201})
 
     } catch (error) {
         console.error("Error registering user", error)
